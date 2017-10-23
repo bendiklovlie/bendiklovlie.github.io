@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="flybillett.css">
+  <script src="flybillett.js"></script>
+</head>
+
+<body>
+ 
+  <div id="main">
+      <p>fra
+      <select id="fra">
+          <option>Oslo</option>
+          <option>Trondheim</option>
+          <option>Haugesund</option>
+          <option>København</option>
+          <option>Stockholm</option>
+          <option>Berlin</option>
+      </select>
+      til
+      <select id="til">
+          <option>Oslo</option>
+          <option>Trondheim</option>
+          <option>Haugesund</option>
+          <option>København</option>
+          <option>Stockholm</option>
+          <option>Berlin</option>
+      </select>
+      </p>
+      <p></p>
+      <label>
+          Antall plasser
+          <input id="plasser" type="number">
+      </label>
+      <p></p>
+      <label>
+          Leiebil
+          <input type="checkbox" id="leiebil">
+      </label>
+      <p></p>
+      <div id="svar"></div>
+      <br><button id="test" type="button">Sjekk pris</button>
+      <p></p>
+      <div id="svarTest"></div>
+      <br><button id="testKnapp" type="button">Test knapp</button>
+
+  </div>
+  
+  <script>
+    setup();
+  </script>
+</body>
+
+</html>

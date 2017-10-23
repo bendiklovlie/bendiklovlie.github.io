@@ -1,0 +1,26 @@
+#a1 {
+    background:red;
+    height: 60%;
+    width: 25%;
+    left: 15%;
+    top: 10%;
+    border: 2px solid green;
+    position: absolute;
+}
+
+#a2 {
+    background:blue;
+    height: 60%;
+    width: 25%;
+    left: 60%;
+    top: 10%;
+    border: 2px solid red;
+    position: absolute;
+}
+h1 {
+    text-align: center;
+    color: green;
+    border: 2px solid red;
+    width: 100%;
+
+}

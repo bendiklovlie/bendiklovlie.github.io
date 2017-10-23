@@ -1,0 +1,97 @@
+#main {
+    height: 800px;
+    width: 800px;
+    position: relative;
+    border: 2px solid red;
+    margin: 5%;
+    background-image: url("crash_crossroad.png");
+    background-size: contain;
+    overflow: hidden;
+}
+#hus1, #hus2, #hus3, #hus4 {
+    position: absolute;
+    width: 250px;
+    height: 250px;
+}
+#hus1 {
+    top: 30px;
+    left: 30px;
+    background-image: url(hus1.png);
+}
+#hus2 {
+    top: 30px;
+    right: 30px;
+    background-image: url(hus2.png);
+}
+#hus3 {
+    left: 30px;
+    bottom: 30px;
+    background-image: url(hus1.png);
+}
+#hus4 {
+    right: 30px;
+    bottom: 30px;
+    background-image: url(hus2.png);
+}
+#bil1, #bil2 {
+    position: absolute;
+    width: 50px;
+    height: 80px;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+#bil1 {
+    background-image: url("bil1.png");
+    left: 300px;
+    top: 50px;
+    animation: bevegelse1 6s linear forwards, sving 5s linear forwards;
+}
+#bil2 {
+    background-image: url("bil2.png");
+    right: 320px;
+    bottom: 50px;
+    animation: bevegelse2 6s linear forwards;
+}
+@keyframes bevegelse1{
+    0% {top: -80px; left: 320px;}
+    45% {top: 250px; left: 320px; transform: none;}
+    50% {top: 280px; left: 320px; transform: rotate(-5deg);}
+    55% {top: 310px; left: 325px; transform: rotate(-10deg);}
+    60% {top: 325px; left: 330px; transform: rotate(-20deg);}
+    65% {top: 350px; left: 340px; transform: rotate(-40deg);}
+    75% {top: 370px; left: 360px; transform: rotate(-50deg);}
+    /* 65% {top: 400px; left: 390px; transform: rotate(-60deg);}
+    70% {top: 410px; left: 420px; transform: rotate(-70deg);} */
+    85% {top: 395px; left: 380px; transform: rotate(-55deg);}
+    100% {top: 395px; left: 380px; transform: rotate(-55deg);}
+    /*75% {top: 420px; left: 450px; transform: rotate(-80deg);}
+    80% {top: 420px; left: 500px; transform: rotate(-90deg);}
+    100% {top: 420px; left: 850px; transform: rotate(-90deg);}*/
+}
+@keyframes bevegelse2{
+    0% {bottom: -80px; right: 320px;}
+    85% {bottom: 290px; right: 320px;}
+    100% {bottom: 290px; right: 320px;}
+}
+@keyframes sving{
+    0% {transform: rotate(0deg);}
+    20% {transform: rotate(-30deg);}
+    40% {transform: rotate(30deg);}
+    60% {transform: rotate(-30deg);}
+    100% {transform: rotate(-80deg);}
+}
+#eksplosjon {
+    width: 300px;
+    height: 300px;
+    position: absolute;
+    bottom: 300px;
+    right: 320px;
+    background-image: url("explosion.gif");
+    background-size: contain;
+    animation: eksplosjon 6s linear forwards;
+}
+@keyframes eksplosjon{
+    0% {bottom: 220px; right: 190px; z-index: -2;}
+    82% {bottom: 220px; right: 190px; z-index: -2;}
+    88% {bottom: 220px; right: 190px; z-index: 2;}
+    100% {bottom: 220px; right: 190px; z-index: -2;}
