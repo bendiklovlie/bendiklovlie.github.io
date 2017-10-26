@@ -45,13 +45,29 @@ function setup() {
         if(xpos<100){
             vx = 2;
         }
-        if(ypos>50){
-            vy = -2;
-        }
-        if(ypos<-150){
+        if(ypos<100){
             vy = 2;
+        } else if(ypos>100){
+            vy = 0;
         }
     }
-    setInterval(tegn,40);
+
+    let restartKnapp = document.getElementById("restart");
+    restartKnapp.addEventListener("click",restartFunksjon);
+
+    function restartFunksjon(event){
+        location.reload();
+    }
+
+    document.addEventListener("keydown", hopp);
+
+    function hopp(event){
+        let x = event.keyCode;
+        if (x === 32){
+            ypos -= 50;
+        }
+      //  vy = -2;
+    }
+    setInterval(tegn,20);
     
 }

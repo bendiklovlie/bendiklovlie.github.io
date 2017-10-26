@@ -1,0 +1,52 @@
+#main{
+    position: relative;
+}
+canvas { 
+    position: absolute;
+    left: 130px;
+    border: solid green 2px;
+}
+
+#firkant,#trekant,#sirkel,#restart {
+    width: 125px;
+    height: 125px;
+    background-color: antiquewhite;
+    border: solid red 1px;
+    left: 0px;
+    position: absolute;
+}
+#firkant{
+    top: 0px;
+}
+#trekant{
+    top: 125px;
+}
+#sirkel{
+    top: 250px;
+}
+#restart{
+    top: 375px;
+}
+#rod,#gronn,#gul,#bla{
+    width: 125px;
+    height: 125px;
+    position: absolute;
+    border: solid red 1px;
+    top: 505px;
+}
+#rod {
+    left: 130px;
+    background-color: red;
+}
+#gronn {
+    left: 255px;
+    background-color: green;
+}
+#gul {
+    left: 380px;
+    background-color: yellow;
+}
+#bla {
+    left: 505px;
+    background-color: blue;
+}

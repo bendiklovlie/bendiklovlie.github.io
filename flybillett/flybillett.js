@@ -31,11 +31,30 @@ function setup() {
     btnTestKnapp.addEventListener("click", testKnappFunction);
    
     function testKnappFunction() {
-        let meldingTest = "knappen fungerer";
+        let start = fra.value;
+        let slutt = til.value;
+        let meldingTest = priserObjekt[start][slutt];
+        let antallPlasser = plasser.valueAsNumber;
+        let omLeiebil = 2000;
+        let leiebil = document.getElementById("leiebil").checked;
+        let manglerPlasser = "Velg antall plasser";
 
+        if (meldingTest === undefined){
+             meldingTest = priserObjekt[slutt][start];
+        }
 
+        if(leiebil === true){
+            meldingTest = (priserObjekt[start][slutt])*antallPlasser+omLeiebil;
+        }   else {
+            meldingTest = (priserObjekt[start][slutt])*antallPlasser;
+        }
 
-        divSvarTest.innerHTML = meldingTest;
+        if(isNaN(antallPlasser) || antallPlasser <= 0 ){
+            divSvarTest.innerHTML = manglerPlasser;
+        } else {
+            divSvarTest.innerHTML = meldingTest;
+        }
+
     }
 
     let btnTest = document.getElementById("test");
