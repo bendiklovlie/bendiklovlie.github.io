@@ -30,13 +30,11 @@ function setup() {
     let blaDiv = document.getElementById("bla");
     blaDiv.addEventListener("click", fargeBla);
 
-
     let canvas = document.getElementById("tegning");
+    canvas.addEventListener("click", posisjon);
     let ctx = canvas.getContext('2d');
 
-
-    canvas.addEventListener("click", posisjon);
-
+    
     let type = "";
     let farge = "black";
     let fyllornot = "";
@@ -59,6 +57,7 @@ function setup() {
                 break;
         }
     }
+
     function lagFirkant(event) {
         type = "firkant";
     }
@@ -78,11 +77,11 @@ function setup() {
         ctx.lineTo(xpos + 50, ypos + 50);
         ctx.lineTo(xpos + 50, ypos);
         ctx.lineTo(xpos, ypos);
-        if (fyllornot === "fill"){
+        if (fyllornot === "fill") {
             ctx.fill();
-        } else if (fyllornot === "stroke"){
+        } else if (fyllornot === "stroke") {
             ctx.stroke();
-        }   else {
+        } else {
             ctx.stroke();
         }
     }
@@ -94,11 +93,11 @@ function setup() {
         ctx.lineTo(xpos + 50, ypos);
         ctx.lineTo(xpos + 25, ypos - 50);
         ctx.lineTo(xpos, ypos);
-        if (fyllornot === "fill"){
+        if (fyllornot === "fill") {
             ctx.fill();
-        } else if (fyllornot === "stroke"){
+        } else if (fyllornot === "stroke") {
             ctx.stroke();
-        }   else {
+        } else {
             ctx.stroke();
         }
     }
@@ -106,26 +105,26 @@ function setup() {
         ctx.strokeStyle = farge;
         ctx.fillStyle = farge;
         ctx.beginPath();
-        ctx.arc(xpos, (ypos), 20, 0, 2*Math.PI);
-        if (fyllornot === "fill"){
+        ctx.arc(xpos, (ypos), 20, 0, 2 * Math.PI);
+        if (fyllornot === "fill") {
             ctx.fill();
-        } else if (fyllornot === "stroke"){
+        } else if (fyllornot === "stroke") {
             ctx.stroke();
-        }   else {
+        } else {
             ctx.stroke();
         }
     }
 
-    function fargeRod(){
+    function fargeRod() {
         farge = 'red';
     }
-    function fargeGronn(){
+    function fargeGronn() {
         farge = 'green';
     }
-    function fargeGul(){
+    function fargeGul() {
         farge = 'yellow';
     }
-    function fargeBla(){
+    function fargeBla() {
         farge = 'blue';
     }
 
@@ -139,7 +138,4 @@ function setup() {
     function restartFunksjon(event) {
         location.reload();
     }
-
-
-
 }
