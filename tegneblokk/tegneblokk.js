@@ -13,6 +13,12 @@ function setup() {
     let sirkelDiv = document.getElementById("sirkel");
     sirkelDiv.addEventListener("click", lagSirkel);
 
+    let fyltDiv = document.getElementById("fylt");
+    fyltDiv.addEventListener("click", fyll);
+
+    let ikkefyltDiv = document.getElementById("ikkefylt");
+    ikkefyltDiv.addEventListener("click", ikkefyll);
+
     let restartDiv = document.getElementById("restart");
     restartDiv.addEventListener("click", restartFunksjon);
 
@@ -37,6 +43,7 @@ function setup() {
 
     let type = "";
     let farge = "black";
+    let fyllornot = "";
 
     function posisjon(e) {
         xpos = e.clientX - 140;
@@ -65,6 +72,7 @@ function setup() {
     }
 
     function tegnFirkant() {
+        ctx.strokeStyle = farge;
         ctx.fillStyle = farge;
         ctx.beginPath();
         ctx.moveTo(xpos, ypos);
@@ -72,25 +80,42 @@ function setup() {
         ctx.lineTo(xpos + 50, ypos + 50);
         ctx.lineTo(xpos + 50, ypos);
         ctx.lineTo(xpos, ypos);
-        ctx.stroke();
-        ctx.fill();
+        if (fyllornot === "fill"){
+            ctx.fill();
+        } else if (fyllornot === "stroke"){
+            ctx.stroke();
+        }   else {
+            ctx.stroke();
+        }
     }
     function tegnTrekant(event) {
+        ctx.strokeStyle = farge;
         ctx.fillStyle = farge;
         ctx.beginPath();
         ctx.moveTo(xpos, ypos);
         ctx.lineTo(xpos + 50, ypos);
         ctx.lineTo(xpos + 25, ypos - 50);
         ctx.lineTo(xpos, ypos);
-        ctx.stroke();
-        ctx.fill();
+        if (fyllornot === "fill"){
+            ctx.fill();
+        } else if (fyllornot === "stroke"){
+            ctx.stroke();
+        }   else {
+            ctx.stroke();
+        }
     }
     function tegnSirkel(event) {
+        ctx.strokeStyle = farge;
         ctx.fillStyle = farge;
         ctx.beginPath();
         ctx.arc(xpos, (ypos), 20, 0, 2*Math.PI);
-        ctx.stroke();
-        ctx.fill();
+        if (fyllornot === "fill"){
+            ctx.fill();
+        } else if (fyllornot === "stroke"){
+            ctx.stroke();
+        }   else {
+            ctx.stroke();
+        }
     }
 
     function fargeRod(){
@@ -106,6 +131,12 @@ function setup() {
         farge = 'blue';
     }
 
+    function fyll() {
+        fyllornot = "fill";
+    }
+    function ikkefyll() {
+        fyllornot = "stroke";
+    }
 
     function restartFunksjon(event) {
         location.reload();

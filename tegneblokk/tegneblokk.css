@@ -7,7 +7,7 @@ canvas {
     border: solid green 2px;
 }
 
-#firkant,#trekant,#sirkel,#restart {
+#firkant,#trekant,#sirkel,#fylt,#ikkefylt,#restart {
     width: 125px;
     height: 125px;
     background-color: antiquewhite;
@@ -17,15 +17,38 @@ canvas {
 }
 #firkant{
     top: 0px;
+    background-image: url(firkant.png);
+    background-size: contain;
 }
 #trekant{
     top: 125px;
+    background-image: url(trekant.png);
+    background-size: contain;
+    background-repeat: no-repeat;
 }
 #sirkel{
     top: 250px;
+    background-image: url(sirkel.png);
+    background-size: contain;
+}
+#fylt{
+    width: 125px;
+    height: 62.5px;
+    top: 375px;
+    background-image: url(fylt.png);
+    background-size: contain;
+}
+#ikkefylt{
+    width: 125px;
+    height: 62.5px;
+    top: 437.5px;
+    background-image: url(ikkefylt.png);
+    background-size: contain;
 }
 #restart{
-    top: 375px;
+    background-image: url(eraser.png);
+    background-size: contain;
+    top: 504px;
 }
 #rod,#gronn,#gul,#bla{
     width: 125px;
