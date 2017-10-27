@@ -1,9 +1,5 @@
 function setup() {
 
-    let xpos = 0;
-    let ypos = 0;
-
-
     let firkantDiv = document.getElementById("firkant");
     firkantDiv.addEventListener("click", lagFirkant);
 
@@ -44,6 +40,8 @@ function setup() {
     let type = "";
     let farge = "black";
     let fyllornot = "";
+    let xpos = 0;
+    let ypos = 0;
 
     function posisjon(e) {
         xpos = e.clientX - 140;
