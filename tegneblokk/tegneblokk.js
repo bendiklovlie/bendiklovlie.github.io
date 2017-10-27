@@ -36,11 +36,22 @@ function setup() {
             case "firkant":
                 tegnFirkant();
                 break;
+            case "trekant":
+                tegnTrekant();
+                break;
+            case "sirkel":
+                tegnSirkel();
+                break;
         }
-
     }
     function lagFirkant(event) {
         type = "firkant";
+    }
+    function lagTrekant(event) {
+        type = "trekant";
+    }
+    function lagSirkel(event) {
+        type = "sirkel";
     }
 
     function tegnFirkant() {
@@ -52,18 +63,19 @@ function setup() {
         ctx.lineTo(xpos, ypos);
         ctx.stroke();
     }
-    function lagTrekant(event) {
-
+    function tegnTrekant(event) {
+        ctx.beginPath();
+        ctx.moveTo(xpos, ypos);
+        ctx.lineTo(xpos + 50, ypos);
+        ctx.lineTo(xpos + 25, ypos - 50);
+        ctx.lineTo(xpos, ypos);
+        ctx.stroke();
     }
-    function lagSirkel(event) {
-
+    function tegnSirkel(event) {
+        ctx.beginPath();
+        ctx.arc(xpos, (ypos), 20, 0, 2*Math.PI);
+        ctx.stroke();
     }
-
-
-
-
-
-
 
 
     function restartFunksjon(event) {
