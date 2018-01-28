@@ -12,13 +12,15 @@
    
     <div id="main">
       <p>Registrer ting</p>
-      <label>Navn:</label><input id="navn" type="text"> <br>
-      <label>Masse (kg):</label><input id="masse" type="number"> <br>
-      <label>Volum (L):</label><input id="volum" type="number"> <br>
-      <label>Kilopris (kr/kg):</label><input id="pris" type="number"> <br>
+      <label>*Navn:</label><input id="navn" value="test" type="text"> <br>
+      <label>*Masse (kg):</label><input id="masse" value="0" type="number"> <br>
+      <label>*Volum (L):</label><input id="volum" value="0" type="number"> <br>
+      <label>Kilopris (kr/kg):</label><input id="pris" value="0" type="number"> <br>
+      <div id="fyllesUt"></div>
       <button id="registrer" type="button">Registrer</button>
       <button id="visListe" type="button">Vis/Fjern liste</button>
       <div id="liste"></div>
+      <div id="penger"></div>
     </div>
 
   <script>

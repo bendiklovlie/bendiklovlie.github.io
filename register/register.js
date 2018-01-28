@@ -6,7 +6,10 @@ function setup() {
     let inpVolum = document.getElementById("volum");
     let inpPris = document.getElementById("pris");
 
+    let divFyllesUt = document.getElementById("fyllesUt");
     let divListe = document.getElementById("liste");
+    let divPenger = document.getElementById("penger");
+    divPenger.innerHTML = "penger: "+0+"kr";
 
     let btnRegistrer = document.getElementById("registrer");
     btnRegistrer.addEventListener("click", registrer);
@@ -21,6 +24,12 @@ function setup() {
         let Masse = inpMasse.valueAsNumber;
         let Volum = inpVolum.valueAsNumber;
         let Pris = inpPris.valueAsNumber;
+
+        if(Navn === "" || isNaN(Masse) || Masse === 0 || isNaN(Volum) || Volum === 0){
+            return divFyllesUt.innerHTML = "* - må fylles ut!";
+        } else {
+            divFyllesUt.innerHTML = "";
+        }
 
         if (Pris === undefined || Pris === 0 || isNaN(Pris)) {
             let a = new Ting(Navn, Masse, Volum);
@@ -43,8 +52,13 @@ function setup() {
 
     let listeOpen = false;
     let liste = "";
+    let antallKnapper = [];
+    let indexPaaKnapp = [];
+    let z = 0;
+    let penger = 0;
 
     function visListe() {
+        z = 0;
         let pris = inpPris.valueAsNumber;
         if (!listeOpen) {
             listeOpen = true;
@@ -53,15 +67,26 @@ function setup() {
                 if (ting.kilopris === undefined || ting.kilopris === 0 || isNaN(ting.kilopris)) {
                     liste += `Navn: ${ting.navn} - Masse: ${ting.masse}kg
                     - Volum: ${ting.volum}L - Tetthet: ${ting.tetthet()}kg/dm^3
-                    - Klasse: ${ting.constructor.name}<br>`;
+                    - Klasse: ${ting.constructor.name}<br> <hr>`;
+                    z++;
                 } else {
+                    let kanskjeSolgt;
+                    if(ting.solgt){
+                        kanskjeSolgt = "solgt"; 
+                    } else {
+                        kanskjeSolgt = "nei";
+                    }
                     liste += `Navn: ${ting.navn} - Masse: ${ting.masse}kg
                     - Volum: ${ting.volum}L - Kilopris: ${ting.kilopris}kr
                     - Totalpris: ${ting.pris()}kr - Tetthet: ${ting.tetthet()}kg/dm^3
-                    - Klasse: ${ting.constructor.name}<br>`;
+                    - Klasse: ${ting.constructor.name} - solgt?: ${kanskjeSolgt}
+                    - <button type="button" value="${z}" class="selg">Selg</button> <br> <hr>`;
+                    antallKnapper.push("1");
+                    z++;
                 }
             }
             divListe.innerHTML = liste;
+            lagEvent();
         } else if (listeOpen) {
             listeOpen = false;
             divListe.style.visibility = "hidden";
@@ -69,6 +94,31 @@ function setup() {
         }
     }
 
+    let btnSelg;
+
+    function lagEvent(){
+        btnSelg = document.getElementsByClassName('selg');
+        for(let i = 0; i < antallKnapper.length; i++){
+            btnSelg[i].addEventListener("click", selg);
+        }
+        antallKnapper = [];
+    }
+    let stringToInt;
+    function selg(e){
+        let x = e.target.value;
+        if(!tingeneMine[x].solgt){
+        tingeneMine[x].selg();
+        stringToInt = tingeneMine[x].pris();
+        penger += parseInt(stringToInt);
+        } else {
+            return;
+        }
+        divPenger.innerHTML = "";
+        divPenger.innerHTML = "penger: "+penger+"kr";
+        liste = "";
+        listeOpen = false;
+        visListe();
+    }
 }
 class Ting {
 
@@ -80,7 +130,7 @@ class Ting {
 
     // beregner tettheten til denne tingen
     tetthet() {
-        return this.masse / this.volum;
+        return (this.masse / this.volum).toFixed(4);
     }
 }
 class SalgbarTing extends Ting {
@@ -94,7 +144,7 @@ class SalgbarTing extends Ting {
 
     // hva koster denne tingen
     pris() {
-        return this.masse * this.kilopris;
+        return (this.masse * this.kilopris).toFixed(2);
     }
 
     // selg tingen
