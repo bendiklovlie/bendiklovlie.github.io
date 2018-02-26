@@ -1,0 +1,98 @@
+#main{
+    height: 500px;
+    width: 800px;
+    position: relative;
+    background-image: url(christmasBackground.jpg);
+    background-size: contain;
+    overflow: hidden;
+}
+#snow{
+	background: none;
+	font-family: Androgyne;
+	background-image: url('http://www.wearewebstars.dk/codepen/img/s1.png'), url('http://www.wearewebstars.dk/codepen/img//s2.png'), url('http://www.wearewebstars.dk/codepen/img//s3.png');
+	height: 100%;
+	left: 0;
+	position: absolute;
+	top: 0;
+	width: 100%;
+	z-index:1;
+	animation: snow 10s linear infinite;
+}
+@keyframes snow {
+  0% {background-position: 0px 0px, 0px 0px, 0px 0px;}
+  50% {background-position: 500px 500px, 100px 200px, -100px 150px;}
+  100% {background-position: 500px 1000px, 200px 400px, -100px 300px;}
+}
+#tree{
+    position: absolute;
+    background-image: url(christmasTree.png);
+    height: 500px;
+    width: 300px;
+    left: 500px;
+    top: 200px;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+#lights{
+    position: absolute;
+    background-image: url(christmasLights.png);
+    height: 500px;
+    width: 900px;
+    left: -30px;
+    top: -20px;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+.santa, .santa1, .santa2{
+    position: absolute;
+    background-image: url(santaSleigh.png);
+    height: 100px;
+    width: 100px;
+    left: -200px;
+    top: 100px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    transform: scaleX(-1);
+    z-index:2;
+}
+.santa {
+    animation: bevegSanta 2s infinite linear ;
+}
+
+@keyframes bevegSanta {
+    0% {left: 900px; height: 100px; width: 100px;}
+    50% {left: 200px; top: 300px; height: 300px; width: 500px;}
+    100% {left: -500px; top: -100px; height: 100px; width: 100px;}
+}
+.santa1{  
+    animation: bevegSanta1 2s infinite linear ;
+}
+
+@keyframes bevegSanta1 {
+    0% {left: 900px; height: 100px; width: 100px;}
+    50% {left: 200px; top: 300px; height: 300px; width: 500px;}
+    100% {left: -600px; top: -100px; height: 100px; width: 100px;}
+}
+.santa2{
+    animation: bevegSanta2 2s infinite linear ;
+}
+
+@keyframes bevegSanta2 {
+    0% {left: 900px; height: 200px; width: 100px;}
+    50% {left: 200px; top: 0px; height: 300px; width: 500px;}
+    110% {left: -600px; top: -100px; height: 100px; width: 100px;}
+}
+
+.package{
+    position: absolute;
+    height: 100px;
+    width: 100px;
+    background-image: url(christmasPresent.png);
+    background-size: contain;
+    animation: dropPakke 2s ease-in;
+}
+@keyframes dropPakke {
+    0% {top: -100px;}
+    /*50% {top: 200px;}*/
+    100% {top: 400px;}
+}

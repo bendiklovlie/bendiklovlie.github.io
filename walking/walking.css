@@ -1,0 +1,45 @@
+#main {
+    background-color: whitesmoke;
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+}
+
+.fig {
+    position: absolute;
+    width: 112px;
+    height: 112px;
+    left: 0px;
+    top: calc(100vh - 130px);
+    background-image: url(walking2.png);
+    background-position-x: 0;
+    opacity: 1;
+}
+
+#fig1{
+    background-position-y: calc(-118px * 2);
+    transition: transform 1s;
+}
+
+.boks{
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    left: 600px;
+    top: calc(100vh - 60px);
+    background-image: url(box.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+.hidden{
+    opacity: 0;
+}
+#boks1{
+    left: 660px;
+    top: calc(100vh - 70px);
+}
+#boks2{
+    left: 66px;
+    top: 25px;
+    opacity: 0;
+}

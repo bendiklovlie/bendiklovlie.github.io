@@ -1,0 +1,22 @@
+@startuml
+:start;
+
+floating note left: husk!
+:beregn pris<
+:beregn()|
+if (test) then (yes)
+    :dostuff;
+else
+    :something else;
+    note right: ny beskjed
+endif
+:i=0;
+while (1<10)
+    :read data;
+    :generate diagrams;
+    :i++;
+endwhile
+
+:http://plantuml.com/activity-diagram-legacy;
+:end;
+@enduml

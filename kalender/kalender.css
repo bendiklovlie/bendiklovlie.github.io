@@ -1,0 +1,39 @@
+#main{
+    position: relative;
+    border: solid gray 1px;
+    height: 200px;
+    width: 200px;
+    background-color: beige;
+}
+#main button{
+    background-color: lightblue;
+    width: 2em;
+    height: 1.5em;
+    border: solid gray 1px;
+    border-radius: 5px;
+    box-shadow: 2px 2px 2px gray;
+}
+#datoer{
+    display: grid;
+    grid-template-columns: repeat(7,1fr);
+    
+}
+#ukedager{
+    display: grid;
+    grid-template-columns: repeat(7,1fr);
+}
+#main div span{
+    padding: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+#main div:nth-of-type(1){
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#main div:nth-of-type(2){
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

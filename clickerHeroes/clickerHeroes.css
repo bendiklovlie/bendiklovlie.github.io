@@ -1,0 +1,98 @@
+#main{
+    background-color: whitesmoke;
+    position: relative;
+    height: 600px;
+    width: 800px;
+}
+
+#clickBox{
+    position: absolute;
+    height: 200px;
+    width: 200px;
+    left: 500px;
+    top: 300px;
+    background-color: blue;
+}
+
+#moneyBox{
+    position: absolute;
+    height: 50px;
+    width: 200px;
+    left: 100px;
+    top: 50px;
+    background-color: gold;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#zoneBox{
+    position: absolute;
+    height: 20px;
+    width: 50px;
+    left: 575px;
+    top: 75px;
+    background-color: brown;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#monstersLeft{
+    position: absolute;
+    height: 50px;
+    width: 200px;
+    left: 500px;
+    top: 150px;
+    background-color: red;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#healthLeft{
+    position: absolute;
+    height: 50px;
+    width: 200px;
+    left: 500px;
+    top: 525px;
+    background-color: green;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#heroes{
+    position: absolute;
+    height: 400px;
+    width: 300px;
+    top: 150px;
+    left: 50px;
+    background: black;
+    overflow: scroll;
+}
+
+.hero {
+    position: absolute;
+    height: 50px;
+    width: 200px;
+    background-color: orange;
+    text-align: center;
+    left: 50px;
+}
+
+#firstHero{
+    top: 50px;
+}
+
+#secondHero{
+    top: 150px;
+}
+
+#thirdHero{
+    top: 250px;
+}
+
+#fourthHero{
+    top: 350px;
+}
+
+#fifthHero{
+    top: 450px;
+}

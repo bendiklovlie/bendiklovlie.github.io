@@ -64,9 +64,10 @@ function setup() {
     function hopp(event){
         let x = event.keyCode;
         if (x === 32){
-            ypos -= 50;
+            for(let i = 0; i < 50; i++){
+                ypos -= 1;
+            }
         }
-      //  vy = -2;
     }
     setInterval(tegn,20);
     

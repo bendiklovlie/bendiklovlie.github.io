@@ -1,0 +1,56 @@
+#main{
+    width: 600px;
+    height: 600px;
+    position: relative;
+    background-color: grey;
+}
+#box{
+    overflow: auto;
+    width: 300px;
+    height: 300px;
+}
+#txtarea{
+    overflow: auto;
+    width: 100px;
+    height: 100px;
+}
+#lagre{
+    position: absolute;
+    left: 100px;
+    top: 350px;
+}
+#refresh{
+    position: absolute;
+    left: 110px;
+    top: 380px;
+}
+#ferdigTekst{
+    position: absolute;
+    left: 300px;
+    height: 300px;
+    width: 300px;
+    top: 0px;
+    background: blue;
+}
+#ferdigOrd{
+    position: absolute;
+    left: 300px;
+    height: 300px;
+    width: 300px;
+    top: 300px;
+    background: orange;
+}
+.flytteTekst{
+    height: 10px;
+    width: 50px;
+    background-color: red;
+    z-index: 2;
+}
+.flytteOrd{
+    position: absolute;
+    height: 20px;
+    width: 50px;
+    background-color: red;
+    z-index: 2;
+    text-align: center;
+}

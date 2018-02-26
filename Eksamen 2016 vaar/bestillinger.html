@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="bestillinger.css">
+  <script src="bestillinger.js"></script>
+  <title>Bestillinger</title>
+</head>
+
+<body>
+   
+    <div id="main">
+        <select id="byer">
+            <option value="">velg fra liste</option>
+            <option value="">St. Petersburg</option>
+            <option value="">Amsterdam</option>
+            <option value="newyork">New York</option>
+            <option value="">Roma</option>
+        </select>
+        <div id="byinfo">
+        </div>
+        <br><select id="reiseperiode">
+            <option value="1">sommerhalvår</option>
+            <option value="2">vinterhalvår</option>
+        </select>
+        <br><label>
+            Antall enkeltrom
+            <input id="enkeltrom" type="number" value=0>
+        </label>
+        <br><label>
+            Antall dobbeltrom
+            <input id="dobbeltrom" type="number" value=0>
+        </label>
+        <br><label>
+            Vil du ha kulturpass?
+            <input id="kulturpass" type="checkbox">
+        </label>
+        <br><button type="button">bestill</button>
+        <div id="pris"></div>
+    </div>
+
+  <script>
+      setup();
+  </script>
+</body>
+
+</html>

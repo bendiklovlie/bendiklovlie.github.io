@@ -1,0 +1,197 @@
+#main{
+    position: relative;
+}
+
+
+.hexagonTundra {
+    position: absolute;
+    width: 50px; 
+    height: 28.87px;
+    background-color: #64C7CC;
+   /* background-image: url(skogmidt.png); */
+    background-size: cover;
+    margin: 14.43px 0;
+  }
+  
+  .hexagonTundra:before,
+  .hexagonTundra:after {
+    content: "";
+    position: absolute;
+    width: 0;
+    border-left: 25px solid transparent;
+    border-right: 25px solid transparent;
+  }
+  
+  .hexagonTundra:before {
+    bottom: 100%;
+    border-bottom: 14.43px solid #64C7CC;
+   /* background-image: url(skogbottom.png); */
+  }
+  
+  .hexagonTundra:after {
+    top: 100%;
+    width: 0;
+    border-top: 14.43px solid #64C7CC;
+   /* background-image: url(skogtop.png); */
+  }
+
+/* ////////////////////////////////////////////////////////// */
+
+  .hexagonFjell {
+    position: absolute;
+    width: 50px; 
+    height: 28.87px;
+    background-color: grey;
+    margin: 14.43px 0;
+  }
+  
+  .hexagonFjell:before,
+  .hexagonFjell:after {
+    content: "";
+    position: absolute;
+    width: 0;
+    border-left: 25px solid transparent;
+    border-right: 25px solid transparent;
+  }
+  
+  .hexagonFjell:before {
+    bottom: 100%;
+    border-bottom: 14.43px solid grey;
+  }
+  
+  .hexagonFjell:after {
+    top: 100%;
+    width: 0;
+    border-top: 14.43px solid grey;
+  }
+
+/* ////////////////////////////////////////////////////////// */
+
+  .hexagonSkog {
+    position: absolute;
+    width: 50px; 
+    height: 28.87px;
+    background-color: green;
+    margin: 14.43px 0;
+  }
+  
+  .hexagonSkog:before,
+  .hexagonSkog:after {
+    content: "";
+    position: absolute;
+    width: 0;
+    border-left: 25px solid transparent;
+    border-right: 25px solid transparent;
+  }
+  
+  .hexagonSkog:before {
+    bottom: 100%;
+    border-bottom: 14.43px solid green;
+  }
+  
+  .hexagonSkog:after {
+    top: 100%;
+    width: 0;
+    border-top: 14.43px solid green;
+  }
+
+/* ////////////////////////////////////////////////////////// */
+
+  .hexagonSjo {
+    position: absolute;
+    width: 50px; 
+    height: 28.87px;
+    background-color: blue;
+    margin: 14.43px 0;
+  }
+  
+  .hexagonSjo:before,
+  .hexagonSjo:after {
+    content: "";
+    position: absolute;
+    width: 0;
+    border-left: 25px solid transparent;
+    border-right: 25px solid transparent;
+  }
+  
+  .hexagonSjo:before {
+    bottom: 100%;
+    border-bottom: 14.43px solid blue;
+  }
+  
+  .hexagonSjo:after {
+    top: 100%;
+    width: 0;
+    border-top: 14.43px solid blue;
+  }
+
+
+/* ////////////////////////////////////////////////////////// */
+
+.hexagonOrken {
+    position: absolute;
+    width: 50px; 
+    height: 28.87px;
+    background-color: beige;
+    margin: 14.43px 0;
+  }
+  
+  .hexagonOrken:before,
+  .hexagonOrken:after {
+    content: "";
+    position: absolute;
+    width: 0;
+    border-left: 25px solid transparent;
+    border-right: 25px solid transparent;
+  }
+  
+  .hexagonOrken:before {
+    bottom: 100%;
+    border-bottom: 14.43px solid beige;
+  }
+  
+  .hexagonOrken:after {
+    top: 100%;
+    width: 0;
+    border-top: 14.43px solid beige;
+  }
+
+
+/* ////////////////////////////////////////////////////////// */
+
+.hexagonGress {
+    position: absolute;
+    width: 50px; 
+    height: 28.87px;
+    background-color: lightgreen;
+    margin: 14.43px 0;
+  }
+  
+  .hexagonGress:before,
+  .hexagonGress:after {
+    content: "";
+    position: absolute;
+    width: 0;
+    border-left: 25px solid transparent;
+    border-right: 25px solid transparent;
+  }
+  
+  .hexagonGress:before {
+    bottom: 100%;
+    border-bottom: 14.43px solid lightgreen;
+  }
+  
+  .hexagonGress:after {
+    top: 100%;
+    width: 0;
+    border-top: 14.43px solid lightgreen;
+  }
+
+
+  #char {
+      position: absolute;
+      width: 50px;
+      height: 50px;
+      background-color: red;
+      z-index: 2;
+  }

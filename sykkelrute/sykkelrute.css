@@ -1,0 +1,41 @@
+#main {
+    position: relative;
+    height: 600px;
+    width: 800px;
+    background-image: url(kart_sykkelrute.jpg);
+    background-repeat: no-repeat;
+}
+#halden{
+    position: absolute;
+    left: 411px;
+    top: 236px;
+    height: 149px;
+    width: 120px;
+    background-color: rgba(123, 43, 123, 0.5);
+}
+#fredrikstad {
+    position: absolute;
+    left: 102px;
+    top: -14px;
+    height: 426px;
+    width: 515px;
+    background-color: rgba(23, 43, 123, 0.5);
+}
+#test{
+    position: absolute;
+    height: 100px;
+    width: 100px;
+    top: 300px;
+    background-color: blue;
+}
+.clip-halden {
+    clip-path: polygon(0% 50%, 25% 40%, 39% 70%,
+    40% 100%,77% 96%,86% 58%,94% 40%,93% 26%,
+    106% 0%,55% 0%,53% 6%,23% 7%,7% 29%);
+  }
+.clip-fredrikstad {
+    clip-path: polygon(52% 87%, 57% 84%, 59% 78%,
+    58% 71%, 56% 65%, 58% 63%, 57% 59%,
+    54% 60%, 52% 55%, 44% 58%, 42% 64%,
+    44% 67%, 47% 70%, 47% 73%, 46% 76%, 49% 79%);
+  }
