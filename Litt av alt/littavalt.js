@@ -32,3 +32,15 @@ if(integer === 123){
 } else if (integer !== 123){
     boolean = false;
 } 
+
+// test = (condition ? value1 : value2);
+
+//sortere
+array.sort(); //sorterer alfabetisk A B C a b c 11 12 14 23 25 4
+array.sort((x,y)=>(x-y)); //sorterer tall i stigende rekkefølge 0 1 2 3 4 
+
+// hente navnene inne i obkjektet
+Object.keys(objektet);
+
+// hente verdiene til navnene inne i objektet
+Object.values(objektet);

@@ -114,7 +114,7 @@ class SalgbarTing extends Ting {
 // vi må lage forekomster (variable) av klassen
 
 let a = new Ting("Gråstein", 2.3, 0.9);
-let b = new SalgbarTing("Sølvklump", 7, 1.1, 1450)
+let b = new SalgbarTing("Sølvklump", 7, 1.1, 1450);
 
 //a.tetthet()   skriver ut tettheten
 //a.pris()  // feil - ting har ikke pris

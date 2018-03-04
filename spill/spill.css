@@ -1,0 +1,31 @@
+#regbox{
+    background-color: whitesmoke;
+}
+#gamebox{
+    position: absolute;
+    height: 400px;
+    width: 800px;
+    background-color: lightblue;
+    overflow: hidden;
+}
+#lagrebox{
+    position: relative;
+    top: 20px;
+    left: 800px;
+    height: 380px;
+    width: 109px;
+    background-color: lightgray;
+}
+#saveScore{
+    height: 20px;
+    width: 50px;
+    position: absolute;
+    left: 835px;
+}
+.range,
+.mage,
+.melee{
+background-color: red;
+position: absolute;
+transition: 59ms;
+}

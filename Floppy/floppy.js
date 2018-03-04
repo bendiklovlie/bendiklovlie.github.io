@@ -25,7 +25,7 @@ function setup() {
 
 
     /*
-    regnetr ut hvor mye søylene flytter seg på 60ms:
+    regner ut hvor mye søylene flytter seg på 60ms:
     900px på 3000ms
     60*(900/3000)
     = 18px
