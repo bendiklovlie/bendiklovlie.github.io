@@ -39,6 +39,9 @@ if(integer === 123){
 array.sort(); //sorterer alfabetisk A B C a b c 11 12 14 23 25 4
 array.sort((x,y)=>(x-y)); //sorterer tall i stigende rekkefølge 0 1 2 3 4 
 
+//legger sammen alle tallene i en array
+array.reduce((x,y)=>(x+y));
+
 // hente navnene inne i obkjektet
 Object.keys(objektet);
 

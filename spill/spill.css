@@ -29,3 +29,11 @@ background-color: red;
 position: absolute;
 transition: 59ms;
 }
+#rotate{
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: blue;
+    left: 400px;
+    top: 40px;
+}
