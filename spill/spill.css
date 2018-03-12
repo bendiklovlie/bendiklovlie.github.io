@@ -25,9 +25,27 @@
 .range,
 .mage,
 .melee{
-background-color: red;
+background-color: transparent;
 position: absolute;
 transition: 59ms;
+}
+.range{
+    background-image: url(range_sprite_sheet.png);
+    background-position-y: -2px;
+    background-position-x: -9px;
+    background-size: 850% 410%;
+}
+.mage{
+    background-image: url(mage_sprite_sheet.png);
+    background-position-y: -7px;
+    background-position-x: -16px;
+    background-size: 1000% 454%;
+}
+.melee{
+    background-image: url(melee_sprite_sheet.png);
+    background-position-y: -6px;
+    background-position-x: 3px;
+    background-size: 2000% 500%;
 }
 #rotate{
     position: absolute;
@@ -36,4 +54,32 @@ transition: 59ms;
     background-color: blue;
     left: 400px;
     top: 40px;
+}
+.skudd{
+    position: absolute;
+    background-color: transparent;
+    height: 20px;
+    width: 50px;
+    transition: 59ms;
+}
+.meleeSkudd{
+    background-image: url(melee_sprite_sheet.png);
+    background-position-y: -240px;
+    background-position-x: -420px;
+    background-size: 1300% 1500%;
+}
+.mageSkudd{
+    background-image: url(mage_sprite_sheet.png);
+    background-position-y: 280px;
+    background-position-x: 163px;
+    background-size: 1100% 2000%;
+}
+.rangeSkudd{
+    background-image: url(range_sprite_sheet.png);
+    background-position-y: 240px;
+    background-position-x: -380px;
+    background-size: 1000% 2000%;
+}
+.hidden{
+    display: none;
 }

@@ -1,0 +1,19 @@
+#main{
+    position: absolute;
+    background-color: whitesmoke;
+    height: 400px;
+    width: 600px;
+}
+#animert{
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    background-color: red;
+    top: 0px;
+    left: 0px;
+    animation: walk 3s alternate  infinite linear;
+}
+
+@keyframes walk{
+    100% {top: 350px; left: 550px; }
+}

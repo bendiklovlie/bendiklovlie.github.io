@@ -25,14 +25,14 @@ function setup(){
     let btnSaveScore = document.getElementById("saveScore");
     btnSaveScore.addEventListener("click", saveScore);
 
-    // defender (name, size, health, range, damage, speedY, speedX, posX, posY, bevegelse)
+    // defender (name, size, health, range, damage, speedY, speedX, posX, posY, bevegelse, skuddFart)
     // her er tre ferdilagte instanser av klassen defender,
     // men har tenkt å åpne for at brukeren
     // kan lage en custom defender
 
-    let range = new defender("range",50,70,10,5,10,10,10,340,0);
-    let mage = new defender("mage",40,50,8,6,8,8,10,350,0);
-    let melee = new defender("melee",80,100,2,10,5,5,10,310,0);
+    let range = new Defender("range",100,70,10,5,10,10,10,340,0,10);
+    let mage = new Defender("mage",100,50,8,6,8,8,10,350,0,8);
+    let melee = new Defender("melee",100,100,2,10,5,5,10,310,0,5);
 
 
     window.addEventListener("keydown", registrerKey);
@@ -57,6 +57,7 @@ function setup(){
     let startX;
     let startY;
     let character;
+    let animation;
 
     // her lager/tegner vi og figuren vi skal bruke
     function startSpill(){
@@ -70,13 +71,13 @@ function setup(){
         //sjekker hvilken instans av defender brukeren har valgt
         if(inpMelee.checked){
             character = melee;
-            grenseBunn = 310;
+            grenseBunn = 390 - character.size;
         } else if(inpRange.checked){
             character = range;
-            grenseBunn = 340;
+            grenseBunn = 390 - character.size;
         } else if(inpMage.checked){
             character = mage;
-            grenseBunn = 350;
+            grenseBunn = 390 - character.size;
         }
 
         box = document.createElement('div');
@@ -84,12 +85,20 @@ function setup(){
         box.style.left = character.posX + "px";
         grenseSide = 10;
         startX = character.posX;
-        box.style.top = character.posY + "px";
-        startY = character.posY;
-        box.style.width = character.size + "px";
+        box.style.top = 390 - character.size + "px";
+        startY = 390 - character.size;
+        character.posY = startY;
+        box.style.width = character.size/2 + "px";
         box.style.height = character.size + "px";
         divGamebox.appendChild(box);
         gravity = character.speedY;
+        if(inpMelee.checked){
+            meleeIdle();
+        } else if(inpRange.checked){
+            rangeWalking();
+        } else if(inpMage.checked){
+            mageWalking();
+        }
 
         // her starter vi hele spillet
         if(!gameInPlay){
@@ -115,19 +124,28 @@ function setup(){
     function tegnSpill(){
         box.style.left = character.posX + "px";
         box.style.top = character.posY + "px";
+        if(skutt){
+            for(let s of skuddArray){
+                s.move(character.skuddFart,0);
+                s.render();
+            }
+        }
     }
 
     let bevegelse;
     let hopp = false;
     let antallHopp = 0;
+    let skutt = false;
 
     // Styrer hvordan figuren beveger seg ved
     // hjelp av piltastene
     function styrSpillet() {
         if (keys[39] === 1) { //piltast høyre
             bevegelse = 2; //går mot høyre
+            box.style.transform = "scaleX(1)";
         } else if(keys[37] === 1){ //piltast venstre
             bevegelse = 1; //går mot venstre
+            box.style.transform = "scaleX(-1)";
         } else if (keys[39] === 0 && keys[37] === 0) { // verken piltast høyre eller venstre
             bevegelse = 0; //står i ro
         }
@@ -149,6 +167,8 @@ function setup(){
                 rotate.play();                  // trykk på space
                 rotert = true;
             }
+            shoot();
+            skutt = true;
         }
     }
     // funksjonen styrer bevegelse i x-retning, altså høyre og venstre
@@ -164,6 +184,7 @@ function setup(){
             character.posX = grenseSide;
         }
     }
+
     // funksjonen styrer bevegelse i y-retning, altså opp og ned
     function jump(){
         if(!hopp){
@@ -178,7 +199,22 @@ function setup(){
             hopp = false;
         }
         }
-        
+    }
+    let skudd;
+    let skuddArray = [];
+    function shoot(){
+        skudd = document.createElement("div");
+        let yPos
+        if(inpMelee.checked){
+            yPos = character.posY + character.size/2;
+        } else if(inpRange.checked){
+            yPos = character.posY + character.size/2;
+        } else if(inpMage.checked){
+            yPos = character.posY + character.size/2 - 25;
+        }
+        let xPos = character.posX + 30;
+        skudd = new Skudd(divGamebox,xPos,yPos,character.skuddFart,0,"skudd" + " " + character.name + "Skudd");
+        skuddArray.push(skudd);
     }
     // bruker array og for-løkke av typen for(let .. of ..) for
     // å gjøre det mulig å lagre scoren en får
@@ -193,41 +229,7 @@ function setup(){
             s += "" + score + "<br>";
         }
         divLagreBox.innerHTML = s;
-    }
-
-
-    //under her er for å dekke flere kompetansemål
-
-    // her er en enkel konverterer som konverterer fra
-    // nautiske mil til kilometer og omvendt
-    let inpKilometer = document.getElementById("kilometer");
-    let inpNautisk = document.getElementById("nautisk");
-    let divSvar = document.getElementById("svar");
-
-    let btnk2n = document.getElementById("k2n");
-    btnk2n.addEventListener("click", k2n);
-
-    let btnn2k = document.getElementById("n2k");
-    btnn2k.addEventListener("click", n2k);
-
-    function k2n(event) {
-        let kilometer = inpKilometer.value;
-        inpNautisk.value = convertK(kilometer).toFixed(2);
-
-    }
-    function n2k(event) {
-        let nautisk = inpNautisk.valueAsNumber;
-        inpKilometer.value = convertN(nautisk).toFixed(2);
-
-    }
-
-    //bruker her noen enkle beregninger
-    function convertK(kilometer) {
-        return kilometer / 1.852;
-    }
-    function convertN(nautisk) {
-        return nautisk * 1.852;
-    }
+    }  
 
     //lager her en liten animasjon ved hjelp av web animation api
 
@@ -242,13 +244,68 @@ function setup(){
     };
     let rotate = divRotate.animate(rotateFrames,rotateSettings);
     let rotert = true;
+
+
+ 
+    let meleeIdleFrames = [
+        { backgroundPositionX: "0px" },
+        { backgroundPositionX: "-761px" }
+    ];
+    let meleeIdleSettings = {
+        duration: 800,
+        iterations: Infinity,
+        easing: "steps(8)"
+    };
+    function meleeIdle(){
+        animation = box.animate(meleeIdleFrames,meleeIdleSettings);
+    }
+        
+    let rangeWalkingFrames = [
+        { backgroundPositionX: "-10px", backgroundPositionY: "-241px"},
+        { backgroundPositionX: "-280px", backgroundPositionY: "-241px" }
+    ];
+    let rangeWalkingSettings = {
+        duration: 800,
+        iterations: 10,
+        easing: "steps(6)"
+    };
+
+    function rangeWalking(){
+        animation = box.animate(rangeWalkingFrames,rangeWalkingSettings);
+    }
+  
+    let mageWalkingFrames = [
+        { backgroundPositionX: "-10px", backgroundPositionY: "-350px" },
+        { backgroundPositionX: "-390px", backgroundPositionY: "-350px" }
+    ];
+    let mageWalkingSettings = {
+        duration: 600,
+        iterations: Infinity,
+        easing: "steps(6)"
+    };
+    function mageWalking(){
+        animation = box.animate(mageWalkingFrames,mageWalkingSettings);
+    }
+    let mageAttackFrames = [
+        { backgroundPositionX: "-20px", backgroundPositionY: "223px" },
+        { backgroundPositionX: "-240px", backgroundPositionY: "223px" }
+    ];
+    let mageAttackSettings = {
+        duration: 100,
+        iterations: Infinity,
+        easing: "steps(3)"
+    };
+    function mageAttacking(){
+        animation = box.animate(mageAttackFrames,mageAttackSettings);
+    }
+
     
 }
 
 // lager her en klasse med egenskapene jeg vil at "defenderen" skal ha.
 
-class defender {
-    constructor(name, size, health, range, damage, speedY, speedX, posX, posY, bevegelse){
+class Defender {
+    constructor(name, size, health, range, damage, speedY, speedX, posX, posY, bevegelse, skuddFart){
         this.name = name;
         this.size = size;
         this.health = health;
@@ -259,6 +316,7 @@ class defender {
         this.posX = posX;
         this.posY = posY;
         this.bevegelse = bevegelse;
+        this.skuddFart = skuddFart;
         this.dead = false;
     }
 
@@ -287,13 +345,13 @@ class defender {
     // Har ikke fått lagt til en skyte-funksjon, men har
     // tenkt å gjøre dette senere, kommer kanskje til å lage denne
     // under setup() også
-    shoot(){
+    /*shoot(){
 
-    }
+    }*/
 }
 //Lager bare et eksempel på extension av class,
 //har ikke tatt det i bruk i koden
-class moneyDefender extends defender {
+class MoneyDefender extends Defender {
 
     constructor(name, size, health, range, damage, speedY, speedX, posX, posY, bevegelse,money){
         
@@ -304,5 +362,29 @@ class moneyDefender extends defender {
 
     buy(){
         this.bought = true;
+    }
+}
+class Skudd{
+    constructor(mainDiv,x,y,vx,vy,klasse){
+        this.x = x;
+        this.y = y;
+        this.vx = vx;
+        this.vy = vy;
+        let div = document.createElement('div');
+        mainDiv.appendChild(div);
+        div.className = klasse;
+        this.div = div;
+    }
+    render(){
+        this.div.style.top = this.y + "px";
+        this.div.style.left = this.x + "px";
+    }
+
+    move(dx,dy) {
+        this.x += 3*dx;
+        this.y += dy;
+        if(this.x > 500){
+            this.div.className = "hidden";
+        }
     }
 }
