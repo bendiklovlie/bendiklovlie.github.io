@@ -55,6 +55,14 @@ transition: 59ms;
     left: 400px;
     top: 40px;
 }
+#test{
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: red;
+    left: 950px;
+    top: 40px;
+}
 .skudd{
     position: absolute;
     background-color: transparent;

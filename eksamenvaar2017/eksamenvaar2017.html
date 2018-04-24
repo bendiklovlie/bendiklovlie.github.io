@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="eksamenvaar2017.css">
+  <script src="eksamenvaar2017.js"></script>
+  <title></title>
+</head>
+
+<body>
+   
+  <div id="main">
+    <div id="vindmolleStativ"></div>
+    <div id="vindmolleHode"></div>
+    <div id="hus"></div>
+    <select id="vindstyrke">
+        <option value="0">ingen vind</option>
+        <option value="1">litt vind</option>
+        <option value="2">mye vind</option>
+    </select>
+    <form id="skjema">
+        Vindstyrke <input type="number" id="vindstyrkeMS">m/s <br>
+        Antall watt = <span id="wattSpan"></span> <br>
+        <button type="button" id="beregn">beregn watt</button>
+    </form>
+    <form id="skjema2">
+        Vindstyrke <input type="number" id="vindstyrkeMS1">m/s <br>
+        Vindstyrke <input type="number" id="vindstyrkeMS2">m/s <br>
+        Vindstyrke <input type="number" id="vindstyrkeMS3">m/s <br>
+        Vindstyrke <input type="number" id="vindstyrkeMS4">m/s <br>
+        Antall watt i løpet av ett døgn = <span id="wattSpan2"></span> <br>
+        <button type="button" id="beregn2">beregn watt</button>
+    </form>
+    
+  </div>
+
+  <script>
+      setup();
+  </script>
+</body>
+
+</html>

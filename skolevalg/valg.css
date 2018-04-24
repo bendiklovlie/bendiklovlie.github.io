@@ -1,0 +1,29 @@
+#diagram{
+    position: absolute;
+    top: 300px;
+    width: 400px;
+    border: solid 1px black;
+}
+#borg,#annet,#rg{
+    position: relative;
+    margin: 2px;
+}
+#borg{
+    height: 40px;
+    width: 0px;
+    background-color: blue;
+}
+#rg{
+    height: 40px;
+    width: 0px;
+    background-color: red;
+}
+#annet{
+    height: 40px;
+    width: 0px;
+    background-color: orange;
+}
+#storst{
+    position: absolute;
+    top: 280px;
+}

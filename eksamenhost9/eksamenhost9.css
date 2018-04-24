@@ -1,0 +1,26 @@
+#test{
+    width: 400px;
+    height: 200px;
+}
+#program{
+    height: 250px;
+    width: 350px;
+    background-color: rgba(231, 128, 31, 0.274);
+}
+#program2{
+    position: relative;
+    height: 300px;
+    width: 200px;
+    background-color: rgba(75, 42, 11, 0.274);
+}
+#svar{
+    height: 40px;
+    width: 200px;
+}
+#svarSoyle{
+    position: absolute;
+    top: 200px;
+    height: 30px;
+    width: 1px;
+    background-color: red;
+}

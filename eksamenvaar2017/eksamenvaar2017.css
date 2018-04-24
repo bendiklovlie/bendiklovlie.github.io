@@ -1,0 +1,41 @@
+#main{
+    height: 600px;
+    width: 800px;
+    position: absolute;
+    background-image: url("eksamenvaarbakgrunn.png");    
+    background-size: cover;
+}
+#hus{
+    position: absolute;
+    height: 400px;
+    width: 600px;
+    top: 100px;
+    left: 200px;
+    background-image: url("hus.png");
+}
+#vindmolleStativ{
+    position: absolute;
+    height: 400px;
+    width: 200px;
+    background-image: url("vindmollestativ.png");
+    top: 150px;
+    left: 120px;
+}
+#vindmolleHode{
+    position: absolute;
+    height: 400px;
+    width: 400px;
+    background-image: url("vindmollehode.png");
+    top: 50px;
+    left: 5px;
+}
+#skjema{
+    position: absolute;
+    top: 0px;
+    left: 500px;
+}
+#skjema2{
+    position: absolute;
+    top: 80px;
+    left: 500px;
+}

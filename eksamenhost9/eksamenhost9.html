@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="eksamenhost9.css">
+  <script src="Test.js"></script>
+  <script src="eksamenhost9.js"></script>
+  <title></title>
+</head>
+<body>
+    <h1>Heiho</h1>
+    <div id="program">
+      <h1 style="text-align:center;">program!</h1>
+      Skriv inn antall nautiske mil <input type="number" id="nautiske"><br>
+      <button type="button" id="beregnKM">Beregn kilometer</button> <br>
+      Det blir <span id="spnKM">0</span> kilometer <br> <br>
+      Skriv inn farten i knop
+      <input type="number" id="fartIKnop"> <br>
+      <button type="button" id="beregnTid">Beregn tid</button> <br>
+      Det vil ta deg <span id="spnTid">0</span> timer å kjøre så langt
+    </div>
+    <div id="program2">
+      <select id="selHavner">
+       <option value="0">Velg havn</option>
+       <option value="14">Kragerø</option>
+       <option value="23">Sandefjor</option>
+       <option value="32">Lyngør</option>
+       <option value="46">Strömstad</option>
+       <option value="85">Kristiansand</option>
+       <option value="109">Göteborg</option>
+      </select><br>
+      <input type="number" id="gjettetVerdi"> <br>
+      <button type="button" id="sjekkSvar">Sjekk svar</button>
+      <div id="svar"></div>
+      <div id="svarSoyle"></div>
+    </div>
+
+    <div id="test"></div>
+  <script>
+      setup();
+  </script>
+</body>
+
+</html>

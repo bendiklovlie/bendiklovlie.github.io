@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="eksamenV08.css">
+  <script src="eksamenV08.js"></script>
+  <title></title>
+</head>
+
+<body>
+    
+
+    <div id="main">
+      <form id="form">
+       Fornavn: <input type="text" id="fname" placeholder="Øyivind"> <br>
+       Etternavn: <input type="text" id="lname" placeholder="Grætle"> <br>           
+       Adresse: <input type="text" id="adresse" placeholder="is"> <br>
+       Telefon nummer: <input type="number" id="tlfnummer" placeholder="bag"> <br>
+       Email: <input type="email" id="email" placeholder="gay">
+      </form>
+      <form id="form2">
+        <div>
+          <div id="produkt1"></div>
+          <input type="number" id="inp1">
+        </div>
+        <div>
+          <div id="produkt2"></div>
+          <input type="number" id="inp2">
+        </div>
+        <div>
+          <div id="produkt3"></div>
+          <input type="number" id="inp3">
+        </div>
+        <div>
+          <div id="produkt4"></div>
+          <input type="number" id="inp4">
+        </div>
+        <div>
+          <div id="produkt5"></div>
+          <input type="number" id="inp5">
+        </div>
+      </form>
+      <div id="totalpris"></div>
+      <div id="melding"></div>
+      <select id="select">
+          <option value="0">ingen produkt</option>
+          <option value="500">produkt1</option>
+          <option value="600">produkt2</option>
+          <option value="700">produkt3</option>
+          <option value="800">produkt4</option>
+          <option value="900">produkt5</option>
+       </select>
+
+        <button id="bestill" type="button">Bestill</button>
+        <div id="ferdig"></div>
+    </div>
+
+  <script>
+      setup();
+  </script>
+</body>
+
+</html>

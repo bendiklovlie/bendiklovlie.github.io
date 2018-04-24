@@ -8,6 +8,8 @@ function setup(){
     function vis(){
         let inpNavn = document.getElementById("navn").value;
         let inpAlder = document.getElementById("alder").value;
-        divVisning.innerHTML = "" + inpAlder + inpNavn + "";
+        let kapittel = Math.random()*8;
+        let oppgave = Math.random()*40;
+        divVisning.innerHTML = "" + kapittel.toFixed(0) + "  ee  " + oppgave.toFixed(0) + "";
     }
 }

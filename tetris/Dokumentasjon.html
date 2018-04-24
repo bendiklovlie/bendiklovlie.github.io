@@ -65,6 +65,79 @@
                 sjekk kollisjon
             </code>
         </pre>
+        <h4>Flytdiagram</h4>
+<code>
+    <pre>
+@startuml
+
+title While Loop - Activity Diagram 
+
+start
+
+while (brett ikke fylt?)  is (Nei)
+  :Lag ny brikke;
+  :Aktiver brikke;
+  :Styr brikke;
+  :Beregn poeng;
+endwhile (Ja)
+
+:Vis poeng;
+
+stop
+
+@enduml
+<img src="While Loop - Activity Diagram.png" alt="">
+    </pre>
+</code>
+<h4>Usecase</h4>
+
+
+<h2>Testing</h2>
+<h3>Testspesifikasjon</h3>
+<h4>Test av krav</h4>
+    <ul>
+        <li>Vi skal ha tertrominoene SDGISJ
+            <p>Lager tester som sjekker at koden får laget de 
+                forskjellige tetrominoene på riktig måte: 
+                under er et eksempel på tester, men de er ikke
+                implementert(tidsnød)<br>
+                <pre><code>
+                    let tetroT = new Tetromino("*,***");
+                    assert(tetroT.cells[0][0][0] === 0);
+                </code></pre>
+            </p>
+        </li>
+        <li>Hver tetromino skal ha sin distinkte farge
+            <pre><code>
+                assert(tetroT.color = "blue");
+            </code></pre>
+        </li>
+        <li>Poengviser oppe til høyre
+            <p>visuell inspeksjon av skjema - stemmer</p>
+        </li>
+        <li>Forhåndsvisning av neste brikke
+            <p>ditto</p>
+        </li>
+        <li>Spillet er over når neste brikke ikke får plass
+            <p>må testes av spiller</p>
+        </li>
+        <li>Hastigheten øker for hver tiende linje
+            <p>- testes av beta-player</p>
+        </li>
+
+        <p>Tester brukervennighet - </p>
+    </ul>
+<h4>Test av grenser</h4>
+<ul>
+    <li>Test at brikkene er sperret inne i brettet - skal
+        ikke kunne flytte forbi høyre og venstre kant
+    </li>
+    <li>Test at rotasjon er logisk - pil opp roterer 90 med viser</li>
+    <li>Test at vi får poeng for å fjerne linjer</li>
+    <li>Test at spillet stopper når brettet er fullt</li>
+</ul>
+
+
     </article>
 </body>
 

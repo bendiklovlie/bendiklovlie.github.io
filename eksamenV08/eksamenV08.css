@@ -1,0 +1,22 @@
+#produkt1,#produkt2,#produkt3,#produkt4,#produkt5{
+    width: 100px;
+    height: 100px;
+    background-color: red;
+    border: 1px solid black;
+    margin: 5px;
+}
+#inp1,#inp2,#inp3,#inp4,#inp5{
+    width: 100px;
+    margin: 5px;
+}
+#form2{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+#totalpris{
+    height: 50px;
+    width: 200px;
+}
+#select{
+    display: none;
+}

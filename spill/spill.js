@@ -8,6 +8,7 @@ function setup(){
     let divGamebox = document.getElementById("gamebox");
     let divLagreBox = document.getElementById("lagrebox");
     let divRotate = document.getElementById("rotate");
+    let divTest = document.getElementById("test");
 
     let inpName = document.getElementById("name");
     let inpLastName = document.getElementById("lastName");
@@ -37,6 +38,12 @@ function setup(){
 
     window.addEventListener("keydown", registrerKey);
     window.addEventListener("keyup", cancelKey);
+    window.addEventListener("keydown", lastKeyPressed);
+
+    let lastKey;
+    function lastKeyPressed(keyEvent){
+        lastKey = keyEvent.keyCode;
+    }
 
     let keys = {};
 
@@ -58,6 +65,15 @@ function setup(){
     let startY;
     let character;
     let animation;
+    let counter = 0;
+    
+    let enemy;
+    let randHP = Math.random()*200;
+    let randRange = Math.random()*10;
+    let randDMG = Math.random()*10;
+    let randSpeedX = Math.random()*10;
+    let randSpeedY = Math.random()*10;
+    let randSkuddFart = Math.random()*10;
 
     // her lager/tegner vi og figuren vi skal bruke
     function startSpill(){
@@ -67,6 +83,10 @@ function setup(){
             character.posY = startY;
         }
         divGamebox.innerHTML = "";
+        counter = 0;
+
+        // (name, size, health, range, damage, speedY, speedX, posX, posY, bevegelse, skuddFart)
+        enemy = new Enemy("enemy",100,randHP,randRange,randDMG,randSpeedY,randSpeedX,10,310,0,randSkuddFart);
 
         //sjekker hvilken instans av defender brukeren har valgt
         if(inpMelee.checked){
@@ -95,9 +115,9 @@ function setup(){
         if(inpMelee.checked){
             meleeIdle();
         } else if(inpRange.checked){
-            rangeWalking();
+            rangeIdle();
         } else if(inpMage.checked){
-            mageWalking();
+            mageIdle();
         }
 
         // her starter vi hele spillet
@@ -136,18 +156,43 @@ function setup(){
     let hopp = false;
     let antallHopp = 0;
     let skutt = false;
+    let bevegelseVenstre = false;
+    
 
     // Styrer hvordan figuren beveger seg ved
     // hjelp av piltastene
     function styrSpillet() {
         if (keys[39] === 1) { //piltast høyre
             bevegelse = 2; //går mot høyre
+            bevegelseVenstre = false;
             box.style.transform = "scaleX(1)";
+            if(inpMelee.checked){
+                meleeWalking();
+            } else if(inpRange.checked){
+                rangeWalking();
+            } else if(inpMage.checked){
+                mageWalking();
+            }
         } else if(keys[37] === 1){ //piltast venstre
             bevegelse = 1; //går mot venstre
+            bevegelseVenstre = true;
             box.style.transform = "scaleX(-1)";
+            if(inpMelee.checked){
+                meleeWalking();
+            } else if(inpRange.checked){
+                rangeWalking();
+            } else if(inpMage.checked){
+                mageWalking();
+            }
         } else if (keys[39] === 0 && keys[37] === 0) { // verken piltast høyre eller venstre
             bevegelse = 0; //står i ro
+            if(inpMelee.checked){
+                meleeIdle();
+            } else if(inpRange.checked){
+                rangeIdle();
+            } else if(inpMage.checked){
+                mageIdle();
+            }
         }
         if (keys[38] === 1) { //piltast opp
             antallHopp ++;
@@ -167,7 +212,13 @@ function setup(){
                 rotate.play();                  // trykk på space
                 rotert = true;
             }
-            shoot();
+            if(inpMelee.checked){
+                meleeAttacking();
+            } else if(inpRange.checked){
+                rangeAttacking();
+            } else if(inpMage.checked){
+                mageAttacking();
+            }
             skutt = true;
         }
     }
@@ -205,16 +256,42 @@ function setup(){
     function shoot(){
         skudd = document.createElement("div");
         let yPos
-        if(inpMelee.checked){
-            yPos = character.posY + character.size/2;
-        } else if(inpRange.checked){
-            yPos = character.posY + character.size/2;
-        } else if(inpMage.checked){
-            yPos = character.posY + character.size/2 - 25;
+            if(inpMelee.checked){
+                yPos = character.posY + character.size/2;
+            } else if(inpRange.checked){
+                yPos = character.posY + character.size/2 - 30;
+            } else if(inpMage.checked){
+                yPos = character.posY + character.size/2 - 25;
+            }
+        let xPos;
+        if(bevegelseVenstre){
+            xPos = character.posX - 15;
+        } else {
+            xPos = character.posX + 30;
         }
-        let xPos = character.posX + 30;
-        skudd = new Skudd(divGamebox,xPos,yPos,character.skuddFart,0,"skudd" + " " + character.name + "Skudd");
+        skudd = new Skudd(divGamebox,xPos,yPos,character.skuddFart,0,"skudd" + " " + character.name + "Skudd",bevegelseVenstre);
         skuddArray.push(skudd);
+        for(let o of skuddArray){
+            if(o.title !== "skutt"){
+                if(bevegelseVenstre){
+                    skuddAnimationFrames = [
+                        { transform: "rotate(-180deg)" },
+                        { transform: "rotate(-270deg)" }
+                    ];
+                } else {
+                    skuddAnimationFrames = [
+                        { transform: "rotate(0deg)" },
+                        { transform: "rotate(90deg)" }
+                    ];
+                }
+                o.animate(skuddAnimationFrames,skuddAnimationSettings);
+                o.title = "skutt";
+            }
+            if(o.div.className === "hidden"){
+                divGamebox.removeChild(divGamebox.childNodes[1]);
+                skuddArray.shift();
+            }
+        }
     }
     // bruker array og for-løkke av typen for(let .. of ..) for
     // å gjøre det mulig å lagre scoren en får
@@ -246,10 +323,12 @@ function setup(){
     let rotert = true;
 
 
- 
+    let doingTheWalk = false;
+    let doingIdle = false;
+
     let meleeIdleFrames = [
-        { backgroundPositionX: "0px" },
-        { backgroundPositionX: "-761px" }
+        { backgroundPositionX: "0px", backgroundPositionY: "0px"},
+        { backgroundPositionX: "-761px", backgroundPositionY: "0px" }
     ];
     let meleeIdleSettings = {
         duration: 800,
@@ -257,23 +336,106 @@ function setup(){
         easing: "steps(8)"
     };
     function meleeIdle(){
+        if (!doingIdle){
         animation = box.animate(meleeIdleFrames,meleeIdleSettings);
+        doingTheWalk = false;
+        doingIdle = true;
+        }
+    }
+    let meleeWalkingFrames = [
+        { backgroundPositionX: "0px", backgroundPositionY: "-111px"},
+        { backgroundPositionX: "-795px", backgroundPositionY: "-111px" }
+    ];
+    let meleeWalkingSettings = {
+        duration: 800,
+        iterations: Infinity,
+        easing: "steps(8)"
+    };
+    function meleeWalking(){
+        if (!doingTheWalk) {
+        animation = box.animate(meleeWalkingFrames,meleeWalkingSettings);
+        doingTheWalk = true;
+        doingIdle = false;
+        }
+    }
+    let meleeAttackingFrames = [
+        { backgroundPositionX: "0px", backgroundPositionY: "-236px"},
+        { backgroundPositionX: "-761px", backgroundPositionY: "-236px" }
+    ];
+    let meleeAttackingSettings = {
+        duration: 500,
+        iterations: 1,
+        easing: "steps(8)"
+    };
+    function meleeAttacking(){
+        animation = box.animate(meleeAttackingFrames,meleeAttackingSettings);
+        animation.onfinish = shoot;
     }
         
+    let rangeIdleFrames = [
+        { backgroundPositionX: "-15px", backgroundPositionY: "0px"},
+        { backgroundPositionX: "-15px", backgroundPositionY: "0px" }
+    ];
+    let rangeIdleSettings = {
+        duration: 800,
+        iterations: Infinity,
+        easing: "steps(7)"
+    };
+    function rangeIdle(){
+        if (!doingIdle){
+        animation = box.animate(rangeIdleFrames,rangeIdleSettings);
+        doingTheWalk = false;
+        doingIdle = true;
+        }
+    }
     let rangeWalkingFrames = [
         { backgroundPositionX: "-10px", backgroundPositionY: "-241px"},
         { backgroundPositionX: "-280px", backgroundPositionY: "-241px" }
     ];
     let rangeWalkingSettings = {
         duration: 800,
-        iterations: 10,
+        iterations: Infinity,
         easing: "steps(6)"
     };
 
     function rangeWalking(){
-        animation = box.animate(rangeWalkingFrames,rangeWalkingSettings);
+        if (!doingTheWalk) {
+            animation = box.animate(rangeWalkingFrames,rangeWalkingSettings);
+            doingTheWalk = true;
+            doingIdle = false;
+        }
     }
-  
+    let rangeAttackingFrames = [
+        { backgroundPositionX: "-20px", backgroundPositionY: "275px"},
+        { backgroundPositionX: "-300px", backgroundPositionY: "275px" }
+    ];
+    let rangeAttackingSettings = {
+        duration: 200,
+        iterations: 1,
+        easing: "steps(4)"
+    };
+
+    function rangeAttacking(){
+        animation = box.animate(rangeAttackingFrames,rangeAttackingSettings);
+        animation.onfinish = shoot;
+    }
+
+    let mageIdleFrames = [
+        { backgroundPositionX: "-15px", backgroundPositionY: "0px"},
+        { backgroundPositionX: "-15px", backgroundPositionY: "0px" }
+    ];
+    let mageIdleSettings = {
+        duration: 800,
+        iterations: Infinity,
+        easing: "steps(7)"
+    };
+    function mageIdle(){
+        if (!doingIdle){
+        animation = box.animate(mageIdleFrames,mageIdleSettings);
+        doingTheWalk = false;
+        doingIdle = true;
+        }
+    }
     let mageWalkingFrames = [
         { backgroundPositionX: "-10px", backgroundPositionY: "-350px" },
         { backgroundPositionX: "-390px", backgroundPositionY: "-350px" }
@@ -284,22 +446,36 @@ function setup(){
         easing: "steps(6)"
     };
     function mageWalking(){
-        animation = box.animate(mageWalkingFrames,mageWalkingSettings);
+        if (!doingTheWalk) {
+            animation = box.animate(mageWalkingFrames,mageWalkingSettings);
+            doingTheWalk = true;
+            doingIdle = false;
+        }
     }
-    let mageAttackFrames = [
+    let mageAttackingFrames = [
         { backgroundPositionX: "-20px", backgroundPositionY: "223px" },
-        { backgroundPositionX: "-240px", backgroundPositionY: "223px" }
+        { backgroundPositionX: "-310px", backgroundPositionY: "223px" }
     ];
-    let mageAttackSettings = {
-        duration: 100,
-        iterations: Infinity,
-        easing: "steps(3)"
+    let mageAttackingSettings = {
+        duration: 150,
+        iterations: 1,
+        easing: "steps(4)"
     };
     function mageAttacking(){
-        animation = box.animate(mageAttackFrames,mageAttackSettings);
+        animation = box.animate(mageAttackingFrames,mageAttackingSettings);
+        animation.onfinish = shoot;
     }
 
-    
+    let skuddAnimationFrames = [
+        { transform: "rotate(0deg)" },
+        { transform: "rotate(90deg)" }
+    ];
+
+    let skuddAnimationSettings = {
+        duration: 1500,
+        iterations: 1,
+    };
+
 }
 
 // lager her en klasse med egenskapene jeg vil at "defenderen" skal ha.
@@ -325,47 +501,29 @@ class Defender {
     die() {
         this.dead = true;
     }
-    
-    // synes det var lettere å kjøre disse funksjonene under setup()
-    // og har derfor kommentert de ut dersom jeg kan trenge
-    // de senere
-   /* flytt(){
-        if(this.bevegelse === 0){
-            return;
-        } else if(this.bevegelse === 1){
-            this.posX -= this.speedX;
-        } else if (this.bevegelse === 2){
-            this.posX += this.speedX;
-        }
-    }*/
-    /*jump(){
-        this.posY = this.posY - this.speedY;
-    }*/
-
-    // Har ikke fått lagt til en skyte-funksjon, men har
-    // tenkt å gjøre dette senere, kommer kanskje til å lage denne
-    // under setup() også
-    /*shoot(){
-
-    }*/
 }
-//Lager bare et eksempel på extension av class,
-//har ikke tatt det i bruk i koden
-class MoneyDefender extends Defender {
-
-    constructor(name, size, health, range, damage, speedY, speedX, posX, posY, bevegelse,money){
-        
-        super(name, size, health, range, damage, speedY, speedX, posX, posY, bevegelse);
-        this.money = money;
-        this.bought = false;
+class Enemy {
+    constructor(name, size, health, range, damage, speedY, speedX, posX, posY, bevegelse, skuddFart){
+        this.name = name;
+        this.size = size;
+        this.health = health;
+        this.range = range;
+        this.damage = damage;
+        this.speedX = speedX;
+        this.speedY = speedY;
+        this.posX = posX;
+        this.posY = posY;
+        this.bevegelse = bevegelse;
+        this.skuddFart = skuddFart;
+        this.dead = false;
     }
 
-    buy(){
-        this.bought = true;
+    die() {
+        this.dead = true;
     }
 }
 class Skudd{
-    constructor(mainDiv,x,y,vx,vy,klasse){
+    constructor(mainDiv,x,y,vx,vy,klasse,bevegelse){
         this.x = x;
         this.y = y;
         this.vx = vx;
@@ -374,6 +532,9 @@ class Skudd{
         mainDiv.appendChild(div);
         div.className = klasse;
         this.div = div;
+        let bulletTime = 0;
+        this.bulletTime = bulletTime;
+        this.bevegelse = bevegelse;
     }
     render(){
         this.div.style.top = this.y + "px";
@@ -381,10 +542,18 @@ class Skudd{
     }
 
     move(dx,dy) {
-        this.x += 3*dx;
-        this.y += dy;
+        this.bulletTime += 0.2;
+        if(this.bevegelse){
+            this.x -= 3*dx;
+        } else {
+            this.x += 3*dx;
+        }
+        this.y += 0.5*9.81*this.bulletTime*this.bulletTime;
         if(this.x > 500){
             this.div.className = "hidden";
         }
+    }
+    animate(frames,settings){
+        this.div.animate(frames,settings);
     }
 }
