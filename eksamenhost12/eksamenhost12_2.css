@@ -1,0 +1,41 @@
+#registrering{
+    position: absolute;
+    display: none;
+    height: 400px;
+    width: 500px;
+    background-color: rgba(138, 50, 50, 0.274);
+}
+#test{
+    position: absolute;
+    top: 600px;
+    height: 200px;
+    width: 200px;
+    background-color: rgba(165, 49, 49, 0.404);
+}
+#soyle1,#soyle2,#soyle3,#soyle4,#soyle5,#soyle6{
+    height: 20px;
+}
+#soyle1{
+    width: 2px;
+    background-color: rgb(65, 11, 11);
+}
+#soyle2{
+    width: 2px;
+    background-color: rgb(40, 196, 162);
+}
+#soyle3{
+    width: 2px;
+    background-color: rgb(131, 116, 33);
+}
+#soyle4{
+    width: 2px;
+    background-color: rgb(209, 38, 152);
+}
+#soyle5{
+    width: 2px;
+    background-color: rgb(129, 167, 155);
+}
+#soyle6{
+    width: 2px;
+    background-color: rgb(39, 236, 22);
+}

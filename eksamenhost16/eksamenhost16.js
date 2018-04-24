@@ -27,17 +27,19 @@ function setup(){
     let bestilling = [ukeNr,middagNr,antallBarn,antallUngdom,antallVoksne];
     bestillingsRegister.push(bestilling);
 
-    let string = "";
+    let string = `<table><tr><th>bestilling</th><th>uke</th>
+    <th>middager</th><th>barn</th><th>ungdom</th><th>voksen</th></tr>`;
     for(let i = 0; i<bestillingsRegister.length; i++){
       let nummer = bestillingsRegister[i][0];
       let middag = bestillingsRegister[i][1];
       let barn = bestillingsRegister[i][2];
       let ungdom = bestillingsRegister[i][3];
       let voksen = bestillingsRegister[i][4];
-      string += `bestilling ${i} i uke ${nummer} er av typen ${middag}
-      og skal være til ${barn} barn, ${ungdom} ungdom og ${voksen} voksne <br>`;
-      divVisning.innerHTML = string;
+      string += `<tr> <td>${i}</td><td>${nummer}</td><td>${middag}</td>
+      <td>${barn}</td><td>${ungdom}</td><td>${voksen}</td></tr>`;
     }
+    string += `</table`;
+    divVisning.innerHTML = string;
   }
 
   // barn(0),undgom(1),voksen(2)

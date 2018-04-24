@@ -1,0 +1,52 @@
+#test{
+    position: absolute;
+    width: 400px;
+    height: 200px;
+    top: 600px;
+}
+#main{
+    position: absolute;
+    width: 440px;
+    height: 400px;
+    background-color: rgba(207, 161, 161, 0.336)
+}
+#heileDriten{
+    position: absolute;
+    top: 50px;
+}
+#vektStativ{
+    position: absolute;
+    top: 50px;
+    left: 150px;
+    width: 10px;
+    height: 50px;
+    background-color: red;
+}
+#vektStav{
+    position: absolute;
+    top: 100px;
+    left: 55px;
+    width: 200px;
+    height: 20px;
+    background-color: blue;
+    transform: rotate(0deg);
+    transition: 500ms;
+}
+#skinke{
+    position: absolute;
+    top: 115px;
+    left: 55px;
+    width: 50px;
+    height: 50px;
+    background-color: black;
+    transition: 500ms;
+}
+#botte{
+    position: absolute;
+    top: 115px;
+    left: 205px;
+    width: 50px;
+    height: 50px;
+    background-color: orange;
+    transition: 500ms;
+}

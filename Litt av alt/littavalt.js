@@ -60,3 +60,13 @@ months.splice(4, 1, 'May');
 // replaces 1 element at 4th index
 console.log(months);
 // expected output: Array ['Jan', 'Feb', 'March', 'April', 'May']
+
+
+//spille av lyd ved å bruke javascript
+
+let audio = document.createElement('audio');
+audio.src = 'alarm.mp3';
+audio.play();
+
+let audio1 = new Audio('lydfil1eksamenhost12.mp3');
+audio1.play();
