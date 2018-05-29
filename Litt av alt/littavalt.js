@@ -98,3 +98,7 @@ for (var j = 0; j < aray.length; j++) {
 
 //shortcut for å lage ny option
 // new Option(text, value)
+
+
+
+window.open("halden_film.mp4", "_blank", "resizable=yes,width=600,height=400");

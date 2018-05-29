@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="../css/museum.css">
+  <script src="../js/Test.js"></script>
+  <script src="../js/museum.js"></script>
+  <title></title>
+</head>
+
+<body>
+
+   <div id="konserter"></div>
+   <div id="foredrag"></div>
+   <div id="kurs">
+       <h4>Registrer deg for kurs her!</h4>
+       <div>Velg kurs fra kombo-boksen og skriv inn info.
+            Trykk så på lagre.
+       </div>
+       <form id="registrer">
+            Velg kurs <select name="kurs" id="kursValg">
+                    <option>Oldtiden</option>
+                    <option>Antikken</option>
+                    <option>Sparta</option>
+                    <option>Athen</option>
+                    <option>Roma</option>
+            </select>
+           <div><label for="navn"><input id="navn" type="text"></label></div>
+           <div><label for="adresse"><input id="adresse" type="text"></label></div>
+           <div><label for="epost"><input id="epost" type="text"></label></div>
+           <div><label for="tlf"><input id="tlf" type="text"></label></div>
+           <div><button id="lagre" type="button" disabled="disabled">Lagre</button></div>
+       </form>
+       <div id="deltakerliste">
+
+       </div>
+   </div>
+
+    <div id="main">
+
+    </div>
+
+  <script>
+      setup();
+  </script>
+</body>
+
+</html>

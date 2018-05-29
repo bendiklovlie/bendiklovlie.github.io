@@ -1,0 +1,20 @@
+input.riktig{
+    background-color: green;
+    color: white;
+}
+input.feil{
+    background-color: red;
+}
+#deltakerliste > div > div {
+    border: solid 1px gray;
+    background-color: rgba(239, 253, 201, 0.39);
+    height: 6em;
+    width: 10em;
+    padding: 5px;
+    margin: 10px;
+    border-radius: 10px;
+}
+#deltakerliste > div{
+   display: grid;
+   grid-template-columns: repeat(3, 1fr)
+}
