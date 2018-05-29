@@ -61,6 +61,9 @@ months.splice(4, 1, 'May');
 console.log(months);
 // expected output: Array ['Jan', 'Feb', 'March', 'April', 'May']
 
+//Starter fjerning på index 4 og fjerner 1 element
+months.splice(4, 1);
+
 
 //spille av lyd ved å bruke javascript
 
@@ -70,3 +73,28 @@ audio.play();
 
 let audio1 = new Audio('lydfil1eksamenhost12.mp3');
 audio1.play();
+
+
+
+//lage en select i javascript
+
+var myDiv = document.getElementById("myDiv");
+
+//Create array of options to be added
+var aray = ["Volvo","Saab","Mercades","Audi"];
+
+//Create and append select list
+var selectList = document.createElement("select");
+selectList.id = "mySelect";
+myDiv.appendChild(selectList);
+
+//Create and append the options
+for (var j = 0; j < aray.length; j++) {
+    var option = document.createElement("option");
+    option.value = array[j];
+    option.text = array[j];
+    selectList.appendChild(option);
+}
+
+//shortcut for å lage ny option
+// new Option(text, value)

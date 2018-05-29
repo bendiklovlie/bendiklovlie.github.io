@@ -1,0 +1,39 @@
+label {
+    display: inline-block;
+    width:70px;
+    text-align: left;
+}
+input:invalid {
+    border: 1px solid red;
+}
+input:valid {
+    border: 1px solid green;
+}
+/* denne plasserer en rød x etter input med feil */
+input:invalid+span:before{
+    content: "x";
+    display: inline;
+    position: relative;
+    left: 3px;
+    top: 0px;
+    color: red;
+}
+div#soylediagram > div > div{
+    margin: 2px;
+    height: 15px;
+}
+div#soylediagram > div:nth-of-type(2n) > div{
+    background-color: blue
+}
+div#soylediagram > div:nth-of-type(2n+1) > div{
+    background-color: red
+}
+div#soylediagram > div > span:nth-of-type(2n+1){
+    width: 100px;
+}
+div#soylediagram > div > :nth-child(n){
+    float: left;
+}
+div#soylediagram > div{
+    display: inline-block;
+}

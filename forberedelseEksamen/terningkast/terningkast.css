@@ -1,0 +1,31 @@
+#picture{
+    height: 500px;
+    width: 500px;
+    border: 1px red solid;
+}
+#terninger{
+    padding: 10px;
+    height: 70px;
+    width: 500px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+}
+div#terninger > div{
+    height: 50px;
+    width: 60px;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+#terninger > div:nth-of-type(1) {background-image: url("terningkastmedia/terning1.png");}
+#terninger > div:nth-of-type(2) {background-image: url("terningkastmedia/terning2.jpg");}
+#terninger > div:nth-of-type(3) {background-image: url("terningkastmedia/terning3.png");}
+#terninger > div:nth-of-type(4) {background-image: url("terningkastmedia/terning4.png");}
+#terninger > div:nth-of-type(5) {background-image: url("terningkastmedia/terning5.png");}
+#terninger > div:nth-of-type(6) {background-image: url("terningkastmedia/terning6.png");}
+
+.bilde{
+    height: 500px;
+    width: 500px;
+    background-repeat: no-repeat;
+    background-size: contain;
+}

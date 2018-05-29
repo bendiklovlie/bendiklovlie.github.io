@@ -1,0 +1,49 @@
+#animasjon{
+    position: absolute;
+    top: 500px;
+    width: 400px;
+    height: 400px;
+    background-color: rgba(121, 101, 101, 0.397);
+    overflow: hidden;
+}
+#isbre{
+    position: absolute;
+    width: 300px;
+    height: 100px;
+    background-color: lightblue;
+    bottom: 0px;
+}
+#plante1,#plante2,#plante3{
+    position: absolute;
+    bottom: 0px;
+    background-color: green;
+    width: 10px;
+}
+#plante1{
+    height: 0px;
+    left: 150px;
+}
+#plante2{
+    height: 0px;;
+    left: 100px;
+}
+#plante3{
+    height: 0px;
+    left: 50px;
+}
+div.soyle {
+    width: 20px;
+    height: 20px;
+    background-color: blue;
+    margin: 4px;
+    color: wheat;
+    padding: 2px;
+}
+div.soyle.valgt {
+    background-color: green;
+}
+#test{
+    position: absolute;
+    top: 200px;
+    left: 450px;
+}

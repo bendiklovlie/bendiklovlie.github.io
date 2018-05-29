@@ -1,4 +1,4 @@
-// @flow
+// 
 const results = [];
 const PASS = '<span style="color:green">PASSED</span> ';
 const FAIL = '<span style="color:red">FAILED</span> ';
@@ -16,6 +16,28 @@ class Test {
     this.not = false;
   }
 
+  get is() {
+    this.msg += " is";
+    return this;
+  }
+  get it() {
+    this.msg += ". It";
+    return this;
+  }
+
+  a(type) {
+    if (!this.alive) return this;
+    if (typeof this.val === type) {
+      results.push(
+        PASS + this.name + "(" + this.args + ")" + this.msg + " a " + type
+      );
+    } else {
+      results.push(
+        FAIL + this.name + "(" + this.args + ")" + this.msg + " not a " + type
+      );
+    }
+  }
+
   get to() {
     return this;
   }
@@ -28,11 +50,11 @@ class Test {
     }
     if (this.fu === val || this.val === val) {
       results.push(
-        PASS + this.name + "(" + this.args + ")" + this.msg + " === " + val
+        PASS + this.name + "(" + JSON.stringify(this.args) + ")" + this.msg + " equal " + val
       );
     } else {
       results.push(
-        FAIL + this.name + "(" + this.args + ")" + this.msg + " !== " + val
+        FAIL + this.name + "(" + JSON.stringify(this.args) + ")" + this.msg + " not equal " + val
       );
     }
   }
@@ -48,32 +70,45 @@ class Test {
 
   looklike(val) {
     if (!this.alive) return this;
-    log(this.fu == val, this, " looks like ", val);
+    log(this.fu == val|| this.val == val, this, " looks like ", val);
   }
 
   approx(val, epsilon = Number.EPSILON) {
     if (!this.alive) return this;
-    log(Math.abs(this.fu - val) < epsilon, this, " ≃ ", val + " ±"+epsilon);
+    log(Math.abs(this.fu - val) < epsilon || this.val - val < epsilon, this, " ≃ ", " " + val + " ±" + epsilon);
   }
 
   gt(val) {
     if (!this.alive) return this;
-    log(this.fu > val, this, "<", val);
+    log(this.fu > val || this.val > val, this, ">", val);
   }
 
   lt(val) {
     if (!this.alive) return this;
-    log(this.fu < val, this, "<", val);
+    log(this.fu < val || this.val < val, this, "<", val);
   }
 
-  have(val) {
+  have(values) {
     if (!this.alive) return this;
-    if (this.fu[val] !== undefined) {
-      this.msg += ".has." + val;
-      this.val = this.fu[val];
+    let p, present, msg;
+    if (typeof values === "string") {
+      // sjekk om vi har .. expect(fu,1,2).to.have("cells.length").eq(12)
+      // values er her "cells.length" - splitter på punktum
+      let vlist = values.split(".");
+      p = this.fu;
+      msg = " has " + values;
+      present = vlist.every(e => p[e] !== undefined ? (p = p[e], true) : false);
+    } else {
+      p = this.fu[values];
+      present = p !== undefined;
+      msg = " has [" + values + "]";  // most likely a numeric index
+    }
+    if (present) {
+      this.msg += msg;
+      this.val = p;
       return this;
     } else {
-      results.push(FAIL + this.name + "(" + this.args + ") ! has." + val);
+      results.push(FAIL + this.name + "(" + this.args + ") does not have " + values);
       this.alive = false;
       return this;
     }
@@ -90,11 +125,11 @@ class Test {
 function log(test, obj, logick, val) {
   if (test) {
     results.push(
-      PASS + obj.name + "(" + obj.args + ")" + logick + obj.msg + val
+      PASS + obj.name + "(" + JSON.stringify(obj.args) + ")" + logick + obj.msg + val
     );
   } else {
     results.push(
-      FAIL + obj.name + "(" + obj.args + ")" + "!" + logick + obj.msg + val
+      FAIL + obj.name + "(" + JSON.stringify(obj.args) + ")" + "!" + logick + obj.msg + val
     );
   }
 }

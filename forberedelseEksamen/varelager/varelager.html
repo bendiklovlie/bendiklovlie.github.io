@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="varelager.css">
+  <script src="varelager.js"></script>
+  <title></title>
+</head>
+
+<body>
+    <form action="" id="vareReg">
+      Her kan du registrere varer! <br>
+      <label for="vare">Varenavn:</label> <input id="vare" type="text"> <br>
+      <label for="antall">Antall:</label> <input  min="0" id="antall" type="number"> <span></span> <br>
+      <label for="pris">Pris:</label> <input id="pris" type="number"> <span></span> <br>
+      <button type="button" id="regVare">Registrer vare</button>
+    </form>
+   
+    <div id="soylediagram">
+
+    </div>
+    <button type="button" id="visKake">Vis kakediagram</button>
+    <div id="kakediagram">
+      <canvas id="diagram" width=300 height=300></canvas>
+    </div>
+
+  <script>
+      setup();
+  </script>
+</body>
+
+</html>

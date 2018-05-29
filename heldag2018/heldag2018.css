@@ -1,0 +1,40 @@
+#test{
+    position: absolute;
+    top: 500px;
+    width: 400px;
+    height: 200px;
+}
+#main{
+    position: absolute;
+    width: 700px;
+    height: 500px;
+}
+.bilde{
+    position: absolute;
+    width: 300px;
+    height: 300px;
+}
+#bilde1{
+    background-repeat: no-repeat;
+    background-image: url("images/image5.png");
+}
+#bilde2{
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-image: url("images/image6.png");
+    left: 210px;
+}
+#bilde3{
+    background-repeat: no-repeat;
+    background-image: url("images/image8.png");
+    left: 620px;
+}
+.tekst{ 
+    top: 200px;
+    margin: 5px;
+    position: relative;
+}
+#resultat{
+    position: absolute;
+    top: 300px;
+}

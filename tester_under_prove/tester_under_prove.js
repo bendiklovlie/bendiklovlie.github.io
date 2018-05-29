@@ -12,4 +12,5 @@ function setup(){
         let oppgave = Math.random()*40;
         divVisning.innerHTML = "" + kapittel.toFixed(0) + "  ee  " + oppgave.toFixed(0) + "";
     }
+    
 }

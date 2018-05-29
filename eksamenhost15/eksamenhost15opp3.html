@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="eksamenhost15opp3.css">
+  <script src="eksamenhost15opp3.js"></script>
+  <title></title>
+</head>
+<!--
+- Engelsk
+- Geografi
+- Historie Vg3
+- Kroppsøving Vg3
+- Naturfag
+- Matematikk Vg1, Vg2 (eller x fag)
+- Norsk hovedmål, skriftlig Vg3
+- Norsk sidemål, skriftlig Vg3
+- Norsk, muntlig Vg3
+- Religion og etikk
+- Samfunnsfag i videregående opplæring
+- minimum 6 programfag
+- minimum 5 eksamener
+-->
+<body>
+    <form id="registrer">
+        <div class="felles">
+            <label>Engelsk<input type="number"></label> <br>
+            <label>Geografi<input type="number"></label> <br>
+            <label>Historie<input type="number"></label> <br>
+            <label>Kroppsøving<input type="number"></label> <br>
+            <label>Naturfag<input type="number"></label> <br>
+            <label>Matematikk<input type="number"></label> <br>
+            <label>Hovedmål<input type="number"></label> <br>
+            <label>Sidemål<input type="number"></label> <br>
+            <label>Norsk muntlig<input type="number"></label> <br>
+            <label>Religion og etikk<input type="number"></label> <br>
+            <label>Samfunnsfag<input type="number"></label> <br>
+          </div>
+          <div class="programfag">
+            <div><label>Fagnavn </label><label for="">Karakter</label></div>
+            <div><input type="text"><input type="number"></div>
+            <div><input type="text"><input type="number"></div>
+            <div><input type="text"><input type="number"></div>
+            <div><input type="text"><input type="number"></div>
+            <div><input type="text"><input type="number"></div>
+            <div><input type="text"><input type="number"></div>
+          </div>
+          <div class="eksamen">
+             <div><label>Eksamen </label><label for="">Karakter</label></div>
+             <div><input type="text"><input type="number"></div>
+             <div><input type="text"><input type="number"></div>
+             <div><input type="text"><input type="number"></div>
+             <div><input type="text"><input type="number"></div>
+             <div><input type="text"><input type="number"></div>
+             <div><input type="text"><input type="number"></div>
+          </div>
+    </form>
+    <button type="button" id="beregn">Beregn</button>
+    <div id="oppsummering"></div>
+
+  <script>
+      setup();
+  </script>
+</body>
+
+</html>
